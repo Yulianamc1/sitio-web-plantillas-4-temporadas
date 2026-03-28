@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY Sublimación & Papelería Creativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --rose: #E8789A;
+    --rose-light: #F9C8D8;
+    --mint: #7ECBA1;
+    --lavender: #B8A4D8;
+    --cream: #FDF8F2;
+    --dark: #1A1118;
+    --dark2: #2D1F2A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(201,168,76,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(232,120,154,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 100%, rgba(184,164,216,0.12) 0%, transparent 60%);
+  }
+
+  .confetti-wrap {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatDot linear infinite;
+  }
+
+  @keyframes floatDot {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { opacity: 0; transform: translateY(-110vh) rotate(720deg); }
+  }
+
+  .hero-badge {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--dark);
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: .45rem 1.4rem;
+    border-radius: 100px;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+
+  .hero-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: .3rem;
+    opacity: 0;
+    animation: fadeUp .8s .4s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeUp .8s .6s forwards;
+  }
+
+  .hero-title span {
+    background: linear-gradient(90deg, var(--rose), var(--gold-light), var(--lavender));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 1.2rem;
+    font-size: clamp(.95rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    max-width: 520px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp .8s .8s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0;
+    animation: fadeUp .8s 1s forwards;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--rose), #D4547A);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: .9rem 2.2rem;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 30px rgba(232,120,154,.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(232,120,154,.5); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.2);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: .9rem 2.2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: background .2s, border-color .2s;
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.4); }
+
+  /* ── TIMER & TRUST BADGES ── */
+  .timer-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    margin: 2rem 0 1.5rem;
+    position: relative; z-index: 2;
+    opacity: 0; animation: fadeUp .8s 0.9s forwards;
+  }
+  .timer-title {
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--gold-light); font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .timer-title.dark-text { color: var(--rose); }
+  .timer-boxes { display: flex; gap: 0.8rem; }
+  .timer-box {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    min-width: 65px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .timer-box.dark-box {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  }
+  .timer-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; color: #fff;
+    line-height: 1;
+  }
+  .timer-num.dark-text { color: var(--dark); }
+  .timer-label {
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7); margin-top: 0.3rem;
+  }
+  .timer-label.dark-text { color: #777; }
+
+  .trust-badges {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 1.5rem;
+    position: relative; z-index: 2;
+    opacity: 0; animation: fadeUp .8s 1.1s forwards;
+  }
+  .trust-badge {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.85rem; color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+  .trust-badge.dark-text { color: #555; }
+
+  .hero-image-wrapper {
+    margin-top: 3.5rem;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 24px;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
+    opacity: 0; animation: fadeUp .8s 1.2s forwards;
+  }
+  .hero-image-wrapper img {
+    width: 100%; height: auto; border-radius: 16px; display: block;
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .4rem;
+    color: rgba(255,255,255,.3); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+    opacity: 0; animation: fadeUp .8s 1.4s forwards;
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: .3; transform: scaleY(1); }
+    50%       { opacity: 1;  transform: scaleY(1.2); }
+  }
+
+  /* ── FLOATING CARDS ── */
+  .preview-strip {
+    background: var(--dark2);
+    padding: 1.5rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .strip-track {
+    display: flex; gap: 1rem;
+    animation: stripScroll 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes stripScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .strip-pill {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 100px;
+    padding: .5rem 1.2rem;
+    color: rgba(255,255,255,.7);
+    font-size: .85rem;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: .5rem;
+  }
+
+  .strip-pill span { font-size: 1rem; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 1.5rem; }
+
+  .section-label {
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500; margin-bottom: .8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--dark);
+  }
+
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  /* ── PROBLEM / HOOK ── */
+  .hook { background: var(--cream); }
+
+  .hook-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+
+  .hook-text p {
+    font-size: 1.05rem; line-height: 1.8; color: #555; margin-top: 1rem;
+  }
+
+  .pain-list { margin-top: 2rem; display: flex; flex-direction: column; gap: .9rem; }
+
+  .pain-item {
+    display: flex; align-items: flex-start; gap: .8rem;
+    background: #fff; border-radius: 12px; padding: 1rem 1.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    border-left: 3px solid var(--rose);
+    font-size: .95rem; color: #444; line-height: 1.5;
+  }
+
+  .pain-item .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .05rem; }
+
+  .hook-visual {
+    background: linear-gradient(135deg, var(--dark), var(--dark2));
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,.15);
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    color: #fff;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900;
+    background: linear-gradient(90deg, var(--gold-light), var(--rose-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .stat-label { font-size: .85rem; color: rgba(255,255,255,.5); margin-top: .2rem; }
+
+  /* ── PRODUCTS ── */
+  .products { background: #fff; }
+
+  .products-inner { max-width: 1100px; margin: 0 auto; }
+
+  .products-header { text-align: center; margin-bottom: 3.5rem; }
+  .products-header p { font-size: 1rem; color: #777; margin-top: .8rem; }
+
+  .tabs {
+    display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .tab {
+    background: #f5f5f5; border: none; border-radius: 100px;
+    padding: .55rem 1.3rem; font-size: .85rem; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: all .2s; color: #777;
+  }
+
+  .tab.active, .tab:hover {
+    background: var(--dark); color: #fff;
+  }
+
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+
+  .product-card {
+    background: var(--cream);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.06);
+    transition: transform .3s, box-shadow .3s;
+    position: relative;
+  }
+
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.1); }
+
+  .card-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-img::after {
+    content: ''; position: absolute; inset: 0;
+    opacity: .15;
+  }
+
+  .card-body { padding: 1.2rem 1.3rem 1.5rem; }
+
+  .card-tag {
+    font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: .4rem;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; line-height: 1.3; margin-bottom: .5rem;
+  }
+
+  .card-desc { font-size: .85rem; color: #777; line-height: 1.6; margin-bottom: 1rem; }
+
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .card-price { font-size: 1.25rem; font-weight: 700; font-family: 'Playfair Display', serif; }
+
+  .card-btn {
+    background: var(--dark); color: #fff; border: none;
+    border-radius: 100px; padding: .5rem 1.1rem;
+    font-size: .8rem; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: background .2s;
+    text-decoration: none; display: inline-block;
+  }
+
+  .card-btn:hover { background: var(--rose); }
+
+  .card-btn-large {
+    background: linear-gradient(135deg, var(--rose), #D4547A);
+    color: #fff; border: none; width: 100%; text-align: center;
+    border-radius: 100px; padding: .8rem 1.2rem;
+    font-size: .95rem; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    text-decoration: none; display: block; font-weight: 600;
+    box-shadow: 0 4px 15px rgba(232,120,154,.4);
+    margin-top: 1rem;
+  }
+  .card-btn-large:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,120,154,.6); }
+
+  .badge-hot {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--rose); color: #fff;
+    font-size: .65rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    padding: .3rem .7rem; border-radius: 100px;
+  }
+
+  .badge-free {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--mint); color: #fff;
+    font-size: .65rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    padding: .3rem .7rem; border-radius: 100px;
+  }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--cream); }
+  .gallery-inner { max-width: 1100px; margin: 0 auto; }
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  /* ── FOR WHO ── */
+  .forwhom { background: var(--dark); color: #fff; }
+
+  .forwhom-inner { max-width: 1000px; margin: 0 auto; }
+
+  .forwhom .section-label { color: var(--gold-light); }
+
+  .forwhom .section-title { color: #fff; }
+  .forwhom .section-title em { color: var(--gold-light); }
+
+  .audience-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem;
+  }
+
+  .audience-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    transition: background .25s, transform .25s;
+  }
+
+  .audience-card:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+
+  .audience-icon { font-size: 2.5rem; margin-bottom: .8rem; }
+
+  .audience-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .4rem;
+  }
+
+  .audience-desc { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+  /* ── HOW IT WORKS ── */
+  .howitworks { background: var(--cream); }
+
+  .hiw-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+  .steps { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: flex; gap: 2rem; align-items: flex-start; text-align: left;
+    padding: 2rem 0;
+    position: relative;
+  }
+
+  .step:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 1.65rem; top: 4.5rem; width: 2px; height: calc(100% - 2.5rem);
+    background: linear-gradient(to bottom, var(--rose-light), transparent);
+  }
+
+  .step-num {
+    width: 3.3rem; height: 3.3rem; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), #D4547A);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(232,120,154,.3);
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem;
+  }
+
+  .step-desc { font-size: .95rem; color: #666; line-height: 1.7; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: #fff; }
+
+  .test-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+
+  .test-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+
+  .test-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+
+  .test-stars { color: var(--gold); font-size: 1rem; margin-bottom: .8rem; letter-spacing: .1em; }
+
+  .test-text { font-size: .95rem; color: #555; line-height: 1.75; margin-bottom: 1.2rem; }
+
+  .test-author { display: flex; align-items: center; gap: .8rem; }
+
+  .test-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose-light), var(--lavender));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .test-name { font-weight: 500; font-size: .9rem; }
+  .test-loc  { font-size: .75rem; color: #aaa; }
+
+  /* ── FREE BONOS ── */
+  .bonos { background: linear-gradient(135deg, var(--dark), var(--dark2)); color: #fff; }
+
+  .bonos-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+  .bonos .section-title { color: #fff; }
+  .bonos .section-label { color: var(--gold-light); }
+
+  .bonos-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem;
+  }
+
+  .bono-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    position: relative; overflow: hidden;
+  }
+
+  .bono-card::before {
+    content: 'GRATIS';
+    position: absolute; top: 1rem; right: -1.8rem;
+    background: var(--mint); color: #fff;
+    font-size: .6rem; letter-spacing: .1em; font-weight: 600;
+    padding: .25rem 2rem;
+    transform: rotate(35deg);
+  }
+
+  .bono-icon { font-size: 2.2rem; margin-bottom: .8rem; }
+
+  .bono-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .4rem;
+  }
+
+  .bono-desc { font-size: .83rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+  .bono-price {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .bono-price-old {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: line-through;
+    font-size: 0.8rem;
+  }
+  .bono-price-new {
+    color: var(--gold-light);
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .bonos-total {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  .bonos-total-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, var(--rose), #D4547A);
+    color: #fff;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    font-weight: 800;
+    padding: clamp(1rem, 3vw, 1.2rem) clamp(1.5rem, 5vw, 3rem);
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(232, 120, 154, 0.4), inset 0 0 15px rgba(255,255,255,0.4);
+    border: 2px solid var(--rose-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: pulse-pink 2s infinite;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .bonos-total-pill span {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  @keyframes pulse-pink {
+    0% { box-shadow: 0 0 20px rgba(232, 120, 154, 0.4), inset 0 0 15px rgba(255,255,255,0.4); }
+    50% { box-shadow: 0 0 40px rgba(232, 120, 154, 0.8), inset 0 0 25px rgba(255,255,255,0.6); }
+    100% { box-shadow: 0 0 20px rgba(232, 120, 154, 0.4), inset 0 0 15px rgba(255,255,255,0.4); }
+  }
+
+  /* ── FAQ ── */
+  .faq { background: var(--dark); color: #fff; }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .faq-grid { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 3rem; }
+  .faq-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: background 0.3s;
+  }
+  .faq-card:hover { background: rgba(255,255,255,0.08); }
+  .faq-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--gold-light);
+    margin-bottom: 0.8rem;
+  }
+  .faq-a {
+    font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7;
+  }
+
+  /* ── PRICING HERO CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--rose) 0%, #D4547A 50%, var(--lavender) 100%);
+    padding: 6rem 1.5rem;
+    text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cta-section .section-title { color: #fff; position: relative; }
+
+  .cta-script {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: rgba(255,255,255,.6);
+    margin-bottom: .5rem;
+  }
+
+  .cta-sub { font-size: 1.1rem; color: rgba(255,255,255,.8); margin: 1rem 0 2.5rem; line-height: 1.7; }
+
+  .btn-white {
+    background: #fff;
+    color: var(--rose);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 1.05rem;
+    padding: 1rem 2.8rem;
+    border-radius: 100px; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    box-shadow: 0 10px 40px rgba(0,0,0,.2);
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+  }
+
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,.4);
+    padding: 3rem 1.5rem; text-align: center;
+    font-size: .85rem; line-height: 2;
+  }
+
+  footer strong { color: rgba(255,255,255,.8); }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 900; color: var(--gold-light);
+    margin-bottom: .5rem;
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
+
+  .footer-links a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; font-size: .8rem; }
+  .footer-links a:hover { color: var(--rose); }
+
+  /* ── STICKY WA ── */
+  .wa-btn {
+    position: fixed; bottom: 2rem; right: 2rem;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(37,211,102,.4);
+    z-index: 999; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    animation: waPulse 3s ease-in-out infinite;
+  }
+
+  .wa-btn:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,.5); }
+
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+    50%       { box-shadow: 0 8px 40px rgba(37,211,102,.7); }
+  }
+
+  .wa-btn svg { width: 30px; height: 30px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .hook-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hook-visual { display: none; }
+    .step { gap: 1.2rem; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 420px) {
+    .products-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="confetti-wrap" id="confetti"></div>
+
+  <div class="hero-badge">✦ Súper Combo de 4 Temporadas</div>
+
+  <p class="hero-script">MY Sublimación</p>
+
+  <h1 class="hero-title">
+    Más de 1,700 páginas y plantillas <span>editables en Canva</span>
+  </h1>
+
+  <p class="hero-sub">
+    Día del Niño, Maestro, Madres y Padre. Todo listo para editar, imprimir y vender. Recupera tu inversión con tus primeras ventas.
+  </p>
+
+  <div class="timer-wrap">
+    <p style="color: var(--rose); font-weight: 800; font-size: 1.3rem; text-shadow: 0 0 15px rgba(232, 120, 154, 0.8); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: -0.3rem; text-align: center;">Diseños frescos y actualizados</p>
+    <div class="timer-title">⏳ Oferta por tiempo limitado</div>
+    <div class="timer-boxes">
+      <div class="timer-box">
+        <div class="timer-num" id="t-hours">02</div>
+        <div class="timer-label">Horas</div>
+      </div>
+      <div class="timer-box">
+        <div class="timer-num" id="t-minutes">00</div>
+        <div class="timer-label">Minutos</div>
+      </div>
+      <div class="timer-box">
+        <div class="timer-num" id="t-seconds">00</div>
+        <div class="timer-label">Segundos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-cta" style="align-items: flex-start;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+      <a href="https://payhip.com/b/gZaz8" class="btn-primary" target="_blank">Comprar ahora por $6.99 USD</a>
+      <span style="font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500;">🍕 Por menos de lo que te cuesta una pizza.</span>
+    </div>
+    <a href="#como-funciona" class="btn-secondary">¿Cómo funciona?</a>
+  </div>
+
+  <div class="trust-badges" style="flex-direction: column; gap: 0.4rem; align-items: center;">
+    <div class="trust-badge">🔒 Compra 100% segura</div>
+    <div class="trust-badge">⚡ Acceso inmediato</div>
+  </div>
+
+  <div class="hero-image-wrapper">
+    <!-- CAMBIAR IMAGEN PRINCIPAL AQUÍ -->
+    <img src="https://i.imgur.com/hl6VZkf.jpeg" alt="Súper Combo 4 Temporadas" referrerPolicy="no-referrer" style="object-fit: cover;">
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="preview-strip">
+  <div class="strip-track" id="strip">
+    <div class="strip-pill"><span>🎲</span> Juegos</div>
+    <div class="strip-pill"><span>🧩</span> Rompecabezas</div>
+    <div class="strip-pill"><span>🖼️</span> Cuadros</div>
+    <div class="strip-pill"><span>📸</span> Álbumes</div>
+    <div class="strip-pill"><span>🏷️</span> Blisters</div>
+    <div class="strip-pill"><span>🖍️</span> Libros para colorear interactivos</div>
+    <div class="strip-pill"><span>🎭</span> Máscaras</div>
+    <div class="strip-pill"><span>🎁</span> Variedad de cajitas</div>
+    <div class="strip-pill"><span>👩</span> Día de las Madres</div>
+    <div class="strip-pill"><span>🍎</span> Día del Maestro</div>
+    <div class="strip-pill"><span>👨</span> Día del Padre</div>
+    <div class="strip-pill"><span>🎉</span> Fiestas & Eventos</div>
+    <div class="strip-pill"><span>☕</span> Diseños para Tazas</div>
+    <div class="strip-pill"><span>👕</span> Playeras</div>
+    <!-- duplicate for seamless loop -->
+    <div class="strip-pill"><span>🎲</span> Juegos</div>
+    <div class="strip-pill"><span>🧩</span> Rompecabezas</div>
+    <div class="strip-pill"><span>🖼️</span> Cuadros</div>
+    <div class="strip-pill"><span>📸</span> Álbumes</div>
+    <div class="strip-pill"><span>🏷️</span> Blisters</div>
+    <div class="strip-pill"><span>🖍️</span> Libros para colorear interactivos</div>
+    <div class="strip-pill"><span>🎭</span> Máscaras</div>
+    <div class="strip-pill"><span>🎁</span> Variedad de cajitas</div>
+    <div class="strip-pill"><span>👩</span> Día de las Madres</div>
+    <div class="strip-pill"><span>🍎</span> Día del Maestro</div>
+    <div class="strip-pill"><span>👨</span> Día del Padre</div>
+    <div class="strip-pill"><span>🎉</span> Fiestas & Eventos</div>
+    <div class="strip-pill"><span>☕</span> Diseños para Tazas</div>
+    <div class="strip-pill"><span>👕</span> Playeras</div>
+  </div>
+</div>
+
+<!-- ── HOOK / PROBLEMA ── -->
+<section class="hook" style="padding-bottom: 2rem;">
+  <div class="hook-inner">
+    <div class="hook-text reveal">
+      <p class="section-label">¿Te identificas?</p>
+      <h2 class="section-title">Tienes creatividad.<br><em>Pero el tiempo vuela.</em></h2>
+      <p>Crear diseños desde cero toma horas. Y las temporadas no esperan. Aquí tienes todo listo para descargar, personalizar y vender.</p>
+      <div class="pain-list">
+        <div class="pain-item"><span class="icon">😩</span> Pierdes horas diseñando cuando podrías estar vendiendo</div>
+        <div class="pain-item"><span class="icon">📦</span> Quieres ofrecer más productos pero no sabes por dónde empezar</div>
+        <div class="pain-item"><span class="icon">💸</span> Tus clientes quieren variedad y tú quieres margen de ganancia</div>
+        <div class="pain-item"><span class="icon">⏰</span> Siempre llega la temporada y no tienes material listo</div>
+      </div>
+    </div>
+
+    <div class="hook-visual reveal">
+      <div class="stat-card">
+        <div class="stat-num">+40</div>
+        <div class="stat-label">Tipos de productos por kit</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Temporadas en un solo combo anual</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Digital · Descarga instantánea</div>
+      </div>
+      <div class="stat-card" style="border-color: rgba(201,168,76,.3);">
+        <div class="stat-num" style="background: linear-gradient(90deg, var(--gold-light), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">MX · CO · US</div>
+        <div class="stat-label">Venta en toda Latinoamérica y EE.UU.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTOS ── -->
+<section class="products" id="productos" style="padding-top: 1rem;">
+  <div class="products-inner">
+    <div class="products-header reveal">
+      <p class="section-label">Nuestros paquetes</p>
+      <h2 class="section-title">Todo lo que necesitas<br><em>para vender esta temporada</em></h2>
+      <p>Más de 1,700 páginas y plantillas editables en Canva</p>
+    </div>
+
+    <div class="products-grid" id="grid">
+
+      <div class="product-card" data-cat="anual">
+        <div class="card-img" style="background: linear-gradient(135deg,#1A1118,#3D1F35);">🌟</div>
+        <span class="badge-hot">⚡ Más vendido</span>
+        <div class="card-body">
+          <p class="card-tag" style="color:var(--gold)">Súper Combo</p>
+          <h3 class="card-name">Súper Combo 4 Temporadas</h3>
+          <p class="card-desc">Más de 1,700 páginas y plantillas editables en Canva. Día del Niño, Maestro, Madres y Padre.</p>
+          <div class="card-footer" style="flex-direction: column; align-items: stretch; gap: 0.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="card-price" style="color:var(--rose)">$6.99 USD</span>
+              <span style="font-size: 0.8rem; text-decoration: line-through; color: #999;">$19.00 USD</span>
+            </div>
+            <a href="https://payhip.com/b/gZaz8" class="card-btn-large" target="_blank">Quiero mi combo ahora</a>
+            <div style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.5rem; font-weight: 500;">
+              🍕 Por menos de lo que te cuesta una pizza.
+            </div>
+            <div style="text-align: center; font-size: 0.75rem; color: #666; margin-top: 0.25rem;">
+              🔒 Compra 100% segura
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="gallery" style="padding-top: 2rem;">
+  <div class="gallery-inner">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label">Galería</p>
+      <h2 class="section-title">Mira lo que puedes<br><em>crear y vender</em></h2>
+      <p style="color: #777; margin-top: 0.8rem;">Ejemplos de productos armados con nuestras plantillas</p>
+    </div>
+    
+    <div class="gallery-grid reveal">
+      <!-- CAMBIAR GALERÍA DE FOTOS AQUÍ -->
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/nQu5IZt.jpeg" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/nuZ15FR.png" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/TGLKaNX.jpeg" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/YVjL7ca.png" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/It0D3Qx.jpeg" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+      <div class="gallery-item">
+        <img src="https://i.imgur.com/XqvJCpe.jpeg" alt="Ejemplo de producto" referrerPolicy="no-referrer">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARA QUIÉN ── -->
+<section class="forwhom">
+  <div class="forwhom-inner">
+    <div class="reveal" style="text-align:center; margin-bottom: 1rem;">
+      <p class="section-label">¿Esto es para ti?</p>
+      <h2 class="section-title">Diseñado para quienes<br><em>hacen magia con sus manos</em></h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-icon">🏪</div>
+        <p class="audience-name">Papelerías & Impresoras</p>
+        <p class="audience-desc">Amplía tu catálogo sin invertir horas en diseño</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">🎀</div>
+        <p class="audience-name">Vendedoras de Detalles</p>
+        <p class="audience-desc">Ofrece productos personalizados con diseños únicos.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">🍎</div>
+        <p class="audience-name">Maestras Creativas</p>
+        <p class="audience-desc">Material listo para actividades y eventos escolares</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">🏠</div>
+        <p class="audience-name">Emprendedoras desde Casa</p>
+        <p class="audience-desc">Solo necesitas impresora e ideas. El diseño ya está hecho</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">🖨️</div>
+        <p class="audience-name">Sublimadores</p>
+        <p class="audience-desc">Diseños optimizados para tazas, playeras y más</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO FUNCIONA ── -->
+<section class="howitworks" id="como-funciona">
+  <div class="hiw-inner">
+    <div class="reveal">
+      <p class="section-label">Simple y rápido</p>
+      <h2 class="section-title">De la compra a las<br><em>ganancias en minutos</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div>
+          <h3 class="step-title">Selecciona tu Combo</h3>
+          <p class="step-desc">Selecciona tu combo completo. Paga de forma segura desde cualquier país.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div>
+          <h3 class="step-title">Descarga al instante</h3>
+          <p class="step-desc">Recibes el enlace de descarga inmediatamente. Todos los archivos en Canva listos para abrir y personalizar con tu nombre, color, tamaño, imagen o bien directamente para imprimir.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div>
+          <h3 class="step-title">Personaliza en Canva</h3>
+          <p class="step-desc">Edita colores, textos y fotos en minutos. Sin experiencia en diseño. Si sabes usar WhatsApp, puedes usar Canva.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div>
+          <h3 class="step-title">Imprime y vende 💰</h3>
+          <p class="step-desc">Descarga tu diseño final, imprime o sublima, arma tus productos y véndelos. ¡Tú pones el precio de venta!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="test-inner">
+    <div class="reveal">
+      <p class="section-label">Lo que dicen</p>
+      <h2 class="section-title">Creadoras que ya<br><em>están vendiendo con el Combo</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Compré el Super combo de 4 temporadas y vendí más de 80 cajitas. El diseño venía tan completo que solo tuve que poner mi nombre. ¡Increíble!"</p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://i.imgur.com/4z21HjF.jpeg" alt="Daniela R." style="object-fit: cover;" referrerPolicy="no-referrer">
+          <div><p class="test-name">Daniela R.</p><p class="test-loc">Guadalajara, México</p></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Soy maestra y usé el combo. Mis alumnas quedaron encantadas y yo gané un dinero extra con la venta de libritos a sus padres. ¡Ya quiero el combo anual!"</p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://i.imgur.com/H6dtXPV.jpeg" alt="Patricia M." style="object-fit: cover;" referrerPolicy="no-referrer">
+          <div><p class="test-name">Patricia M.</p><p class="test-loc">Bogotá, Colombia</p></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Tengo una pequeña imprenta y esto me cambió el negocio. Ahora ofrezco diseños completos sin contratar diseñadora. Vale muchísimo."</p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://i.imgur.com/bsGRB08.png" alt="Fernanda G." style="object-fit: cover;" referrerPolicy="no-referrer">
+          <div><p class="test-name">Fernanda G.</p><p class="test-loc">Houston, Texas</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BONOS GRATIS ── -->
+<section class="bonos">
+  <div class="bonos-inner">
+    <div class="reveal">
+      <p class="section-label">Incluido con tu compra</p>
+      <h2 class="section-title" style="color:#fff">Bonos gratuitos que<br>multiplican tus ventas</h2>
+    </div>
+    <div class="bonos-grid">
+      <div class="bono-card reveal">
+        <div class="bono-icon">📊</div>
+        <p class="bono-name">Calculadora de Precios</p>
+        <p class="bono-desc">Sabe exactamente cuánto cobrar por cada producto para ganar bien</p>
+        <div class="bono-price">
+          <span class="bono-price-old">$5 USD</span>
+          <span class="bono-price-new">ahora $0 USD</span>
+        </div>
+      </div>
+      <div class="bono-card reveal">
+        <div class="bono-icon">📖</div>
+        <p class="bono-name">Guía de Ventas</p>
+        <p class="bono-desc">Cómo vender tus primeros productos efectivamente.</p>
+        <div class="bono-price">
+          <span class="bono-price-old">$3 USD</span>
+          <span class="bono-price-new">ahora $0 USD</span>
+        </div>
+      </div>
+      <div class="bono-card reveal">
+        <div class="bono-icon">🎨</div>
+        <p class="bono-name">Tutorial Canva Express</p>
+        <p class="bono-desc">Como hacer tu primer diseño en Canva.</p>
+        <div class="bono-price">
+          <span class="bono-price-old">$5 USD</span>
+          <span class="bono-price-new">ahora $0 USD</span>
+        </div>
+      </div>
+      <div class="bono-card reveal">
+        <div class="bono-icon">📦</div>
+        <p class="bono-name">Lista de Materiales</p>
+        <p class="bono-desc">Qué materiales necesitas para armar y vender.</p>
+        <div class="bono-price">
+          <span class="bono-price-old">$3 USD</span>
+          <span class="bono-price-new">ahora $0 USD</span>
+        </div>
+      </div>
+    </div>
+    <div class="bonos-total reveal">
+      <a href="https://payhip.com/b/gZaz8" target="_blank" class="bonos-total-pill">
+        Todo por <span>$6.99 USD</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label">Preguntas Frecuentes</p>
+      <h2 class="section-title" style="color:#fff">Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Cómo recibo el producto?</h3>
+        <p class="faq-a">Una vez que tu pago sea procesado, recibirás inmediatamente un correo electrónico con el enlace de acceso a todos tus archivos y bonos.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Funciona la versión Gratuita de Canva?</h3>
+        <p class="faq-a">No necesariamente. Muchas plantillas utilizan elementos gratuitos de Canva. Si alguno incluye elementos Pro, puedes reemplazarlos fácilmente por elementos gratuitos dentro de la plataforma.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Puedo editar los diseños?</h3>
+        <p class="faq-a">¡Sí! Puedes cambiar textos, colores, agregar tus propias fotos o el nombre de tus clientes. Todo es editable.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Puedo imprimir y vender mis productos terminados?</h3>
+        <p class="faq-a">Por supuesto. Esa es la idea principal. Puedes imprimir, armar y vender los productos físicos a tus clientes sin ningún problema.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿La compra es segura?</h3>
+        <p class="faq-a">Totalmente. Utilizamos plataformas de pago reconocidas internacionalmente que protegen tus datos. Tu compra está 100% segura.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Recibo acceso inmediato?</h3>
+        <p class="faq-a">Sí, el acceso es automático e inmediato después de confirmar tu pago, sin importar el día o la hora.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h3 class="faq-q">¿Las páginas y plantillas son permanentes?</h3>
+        <p class="faq-a">Sí, haciendo sus copias desde su cuenta de Canva, podrá obtenerlas permanentemente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="cta-section">
+  <p class="cta-script">¿Lista para vender?</p>
+  <h2 class="section-title" style="color:#fff; text-align:center">Empieza hoy. Esta temporada<br>no te puede pasar de largo.</h2>
+  <p class="cta-sub">Descarga al instante · Pago seguro · Soporte por WhatsApp</p>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+    <a href="#productos" class="btn-white">🎀 Ver todos los paquetes</a>
+    <span style="font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500;">🍕 Por menos de lo que te cuesta una pizza.</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">MY Sublimación & Papelería Creativa</div>
+  <p>Diseños digitales para papelería creativa y sublimación</p>
+  <div class="footer-links">
+    <a href="#">Inicio</a>
+    <a href="#productos">Paquetes</a>
+    <a href="#como-funciona">¿Cómo funciona?</a>
+    <a href="#">Contacto</a>
+    <a href="#">Política de privacidad</a>
+  </div>
+  <p>© 2025 MY Sublimación y Papelería Creativa · Todos los derechos reservados</p>
+</footer>
+
+<!-- ── WHATSAPP BTN ── -->
+<a href="https://wa.me/523314708786?text=Hola,%20me%20interesan%20los%20paquetes%20de%20MY%20Sublimación" class="wa-btn" target="_blank" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  // ── CONFETTI ──
+  const colors = ['#C9A84C','#E8789A','#B8A4D8','#7ECBA1','#F0D080','#F9C8D8'];
+  const wrap = document.getElementById('confetti');
+  for (let i = 0; i < 35; i++) {
+    const d = document.createElement('div');
+    const size = Math.random() * 8 + 4;
+    d.className = 'dot';
+    d.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100 + 100}%;
+      width:${size}px; height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${Math.random()*10+8}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    wrap.appendChild(d);
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── TABS ──
+  function filterTab(btn, cat) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      const show = cat === 'todos' || card.dataset.cat === cat;
+      card.style.display = show ? 'block' : 'none';
+    });
+  }
+
+  // ── TIMER ──
+  function startTimer() {
+    let hours = 2;
+    let minutes = 0;
+    let seconds = 0;
+
+    const hEl = document.getElementById('t-hours');
+    const mEl = document.getElementById('t-minutes');
+    const sEl = document.getElementById('t-seconds');
+
+    setInterval(() => {
+      if (seconds > 0) {
+        seconds--;
+      } else {
+        seconds = 59;
+        if (minutes > 0) {
+          minutes--;
+        } else {
+          minutes = 59;
+          if (hours > 0) {
+            hours--;
+          } else {
+            hours = 2; // Reset for demo purposes
+          }
+        }
+      }
+
+      hEl.textContent = hours.toString().padStart(2, '0');
+      mEl.textContent = minutes.toString().padStart(2, '0');
+      sEl.textContent = seconds.toString().padStart(2, '0');
+    }, 1000);
+  }
+  
+  startTimer();
+</script>
+</body>
+</html>
